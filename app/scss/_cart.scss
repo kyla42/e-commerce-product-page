@@ -13,6 +13,10 @@
     @extend %fxcol;
     z-index: 1;
 
+    @include u.bp(md) {
+        right: 0;
+    }
+
     @include u.bp(sm) {
         top: 7rem;
         right: 50%;

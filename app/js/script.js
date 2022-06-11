@@ -1,4 +1,4 @@
-// add / sub / cart popup / counter
+// counter /cart popup 
 const sub = document.querySelector(".sub");
 const add = document.querySelector(".add");
 const count = document.querySelector(".count");
@@ -63,8 +63,17 @@ empty.addEventListener("click", () => {
     emptyCartPopUp.classList.remove("hidden");
 });
 
+const cartClose = () => {
+    cartPopUp.classList.add("hidden");
+    emptyCartPopUp.classList.add("hidden");
+}
 
-// main page image switch
+window.addEventListener("resize", () => {
+    cartClose();
+})
+
+
+// image-related
 const imgFrame = document.querySelector(".imgFrame");
 const thumbBtn = document.querySelectorAll(".thumb");
 
@@ -82,6 +91,7 @@ productImgs = [
     "./images/image-product-4.jpg"
 ];
 
+// main page image slider (tied to modal image slider)
 i = 0;
 
 for (let i = 0; i < thumbBtn.length; i++) {
@@ -97,16 +107,18 @@ for (let i = 0; i < thumbBtn.length; i++) {
         imgFrame.src = productImgs[i];
         imgFrameModal.src = productImgs[i];
         thumbBtn[i].classList.add("active");    
-        thumbBtnModal[i].classList.add("active");   
+        thumbBtnModal[i].classList.add("active");
     });
 };
 
 
-// modal 
+// modal on/off
 const mediaSm = window.matchMedia("(max-width: 600px)");
 
 imgFrame.addEventListener("click", () => {
     overlay.classList.remove("hidden");
+    cartClose(); 
+
     if (mediaSm.matches) {
         overlay.classList.add("hidden");
     }
@@ -122,7 +134,7 @@ closeModal.addEventListener("click", () => {
 });
 
 
-// modal image switch
+// modal image slider (thumbnails & buttons)
 for (let i = 0; i < thumbBtnModal.length; i++) {
     thumbBtnModal[i].addEventListener("click", () => {
         
@@ -173,7 +185,7 @@ prevModal.addEventListener("click", () => {
 });
 
 
-// mobile screen image switch
+// mobile screen image slider (tied to front page image slider)
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
 const getSrc = () => {
@@ -221,6 +233,7 @@ const menuClose = document.querySelector(".menu-close");
 menuBtn.addEventListener("click", () => {
     mobileOverlay.classList.add("active");
     menuArea.classList.add("active");
+    cartClose(); 
 })
 
 menuClose.addEventListener("click", () => {
