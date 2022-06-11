@@ -68,9 +68,7 @@ const cartClose = () => {
     emptyCartPopUp.classList.add("hidden");
 }
 
-window.addEventListener("resize", () => {
-    cartClose();
-})
+window.addEventListener("resize", cartClose)
 
 
 // image-related
@@ -129,9 +127,7 @@ imgFrame.addEventListener("click", () => {
     })
 });
 
-closeModal.addEventListener("click", () => {
-    overlay.classList.add("hidden");
-});
+closeModal.addEventListener("click", () => overlay.classList.add("hidden"));
 
 
 // modal image slider (thumbnails & buttons)
