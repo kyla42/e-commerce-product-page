@@ -17,6 +17,7 @@
 
     @include u.bp(sm) {
         margin: 0 auto 5rem auto;
+        row-gap: 2rem
     }
 }
 
@@ -136,18 +137,25 @@
                 font-weight: 700;
                 letter-spacing: 0.1rem;
             }
-        
-            .title {
-                margin-bottom: 3.4rem;
-            }
         }
     
         &__prices {
             font-weight: 700;
+
+            @include u.bp(sm) {
+                margin-top: 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
     
             .current-price {
                 margin-bottom: 1rem;
                 @extend %fx-ai-c;
+
+                @include u.bp(sm) {
+                    margin: 0;
+                }
           
                 .price {
                     margin-right: 1.6rem;
@@ -177,7 +185,7 @@
             @extend %fx-jc-sb;
 
             @include u.bp(sm) {
-                margin-top: 5rem;
+                margin-top: 3rem;
                 flex-direction: column;
                 row-gap: 1.6rem;
             }

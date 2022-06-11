@@ -114,6 +114,11 @@
             background-size: cover;
             border-radius: 50%;
 
+            @include u.bp(sm) {
+                width: 3rem;
+                height: 3rem;
+            }
+
             &:hover {
 
                 outline: 0.2rem solid u.$c-Orange;

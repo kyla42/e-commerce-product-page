@@ -44,6 +44,13 @@ button {
 h1 {
     font-size: 4.4rem;
     line-height: 4.8rem;
+    margin-bottom: 3.4rem;
+
+    @include bp(sm) {
+        font-size: 3.2rem;
+        line-height: inherit;
+        margin-bottom: 2rem;
+    }
 }
 
 p {
@@ -59,7 +66,6 @@ p {
 
 .container {
     width: 144rem;
-    // max-height: 90rem;
     margin: auto;
     background: $c-White;
     @extend %fxcol;
