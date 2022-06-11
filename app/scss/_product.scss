@@ -212,8 +212,8 @@
                 @extend %fx-jcai-c;
             }
         
-            .sub,
-            .add {
+            #sub,
+            #add {
                 position: absolute;
                 top: 0;
                 width: 4.4rem;
@@ -228,12 +228,12 @@
                 }
             } 
         
-            .sub {
+            #sub {
                 left: 0;
                 background: url(../images/icon-minus.svg) transparent no-repeat center;
             }
         
-            .add {
+            #add {
                 right: 0;
                 background: url(../images/icon-plus.svg) transparent no-repeat center;
             }
