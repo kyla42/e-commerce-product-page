@@ -1,6 +1,6 @@
 // counter /cart popup 
-const sub = document.querySelector(".sub");
-const add = document.querySelector(".add");
+const sub = document.getElementById("sub");
+const add = document.getElementById("add");
 const count = document.querySelector(".count");
 const addToCart = document.querySelector(".addToCart");
 const cartCounter = document.querySelector(".cart-counter");
@@ -228,7 +228,7 @@ prev.addEventListener("click", () => {
 const menuBtn = document.querySelector(".hbg-menu");
 const mobileOverlay = document.querySelector(".mobile-overlay");
 const menuArea = document.querySelector(".menu-area");
-const menuClose = document.querySelector(".menu-close");
+const menuClose = document.getElementById("menu-close");
 
 menuBtn.addEventListener("click", () => {
     mobileOverlay.classList.add("active");
