@@ -1,0 +1,99 @@
+@use "util" as u;
+
+.cart {
+    position: absolute;
+    top: 9rem;
+    right: -8rem;
+    width: 36rem;
+    height: 26rem;
+    background: u.$c-White;
+    box-shadow: 0 2rem 5rem hsla(0, 0%, 0%, 0.2);
+    border-radius: 1rem;
+    transition: all .2s ease-out;
+    @extend %fxcol;
+    z-index: 1;
+
+    @include u.bp(sm) {
+        top: 7rem;
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    &.hidden {
+        display: none;
+    }
+
+    &__title {
+        width: 100%;
+        height: 7rem;
+        padding-left: 2rem;
+        color: black;
+        font-weight: 700;
+        border-bottom: 0.1rem solid u.$c-GrayishBlue;
+        @extend %fx-ai-c;
+    }
+
+    &__contents {
+        width: 86%;
+        margin: auto;
+        @extend %fx-jc-sb;
+
+        &--image {
+            width: 5rem;
+            height: 5rem;
+            background: url(/images/image-product-1-thumbnail.jpg) no-repeat;
+            background-size: cover;
+            border-radius: 0.5rem;
+        }
+
+        &--product {
+            @extend %fxcol-jc-sa;
+
+            .calc {
+                display: flex;
+                column-gap: 0.8rem;
+
+                .total {
+                    color: initial;
+                    font-weight: 700;
+                }
+            }
+        }
+
+        &--empty {
+            background: transparent;
+            @extend %fx-ai-c;
+        }
+    }
+
+    &__checkout {
+        width: 86%;
+        height: 5.6rem;
+        margin: 0 auto 3rem auto;
+        color: u.$c-White;
+        background: u.$c-Orange;
+        border-radius: 1rem;
+        transition: all .2s ease-out;
+
+        &:hover {
+            opacity: 0.6;
+        }
+
+        &:active {
+            transform: scale(0.95);
+        }
+    } 
+}
+
+
+// empty cart
+.cart-empty {
+    @extend .cart;
+
+    &__message {
+        width: 86%;
+        margin: auto;
+        font-weight: 700;
+        @extend %fx-jcai-c;
+    }
+}

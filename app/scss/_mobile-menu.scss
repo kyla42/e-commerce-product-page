@@ -1,0 +1,75 @@
+@use "util" as u;
+
+.mobile-overlay {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: u.$c-BlackAdOp;
+    transition: all .35s ease-in-out;
+    transition-delay: .2s;
+
+    @include u.bp(md) {
+
+        &.active {
+            transition: all .35s ease-in-out;
+            left: 0;
+        }
+    }
+}
+
+.menu-area {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100%;
+    padding: 3.5rem 2.5rem;
+    font-size: 3.5rem;
+    background: u.$c-White;
+    transition: all .3s ease-in-out;
+    
+
+    @include u.bp(md) {
+
+        &.active {
+            transition: all .3s ease-in-out;
+            transition-delay: .2s;
+            left: 0;
+            display: block;
+        }
+    }
+
+    @include u.bp(sm) {
+        padding: 1.2rem;
+    }
+
+    .menu-close {
+        font-size: 4rem;
+        background-color: transparent;
+
+        .bx::before {
+            color: u.$c-DarkGrayishBlue;
+        }
+    }
+
+    .mobile-menu {
+        margin-left: 1rem;
+
+        .link {
+            margin-top: 3rem;
+            transition: all .2s ease-in-out;
+
+            &:hover {
+                color: u.$c-Orange;
+                transform: translateX(10%) scale(1.2);
+            }
+        }
+    }
+}
+
+
+
+
+    

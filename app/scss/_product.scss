@@ -1,0 +1,264 @@
+@use "util" as u;
+
+.product {
+    width: 77%;
+    margin: 9rem auto 13.2rem auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3rem;
+
+    @include u.bp(md) {
+        width: 100%;
+        margin: 5rem auto;
+        grid-template-columns: auto;
+        column-gap: 0;
+        row-gap: 5rem;
+    }
+
+    @include u.bp(sm) {
+        margin: 0 auto 5rem auto;
+    }
+}
+
+.image-area {
+    @extend %fxcol;
+    margin: 0 auto;
+    row-gap: 3.2rem;
+
+    .frame {
+        position: relative;
+        width: 44.5rem;
+        height: 44.5rem;
+        cursor: pointer;
+
+        @include u.bp(sm) {
+            width: 100%;
+            height: auto;
+            cursor: inherit;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 1.6rem;
+
+            @include u.bp(sm) {
+                border-radius: 0;
+            }
+        }
+        
+        // buttons for mobile screen
+        .prev,
+        .next {
+            position: absolute;
+            top: 44.5vmin;
+            width: 4.5rem;
+            height: 4.5rem;
+            font-size: 4rem;
+            background: u.$c-White;
+            border-radius: 50%;
+            @extend %fx-jcai-c;
+            text-align: center;
+            display: none;
+
+            @include u.bp(sm) {
+                display: block;
+            }
+
+            &:hover {
+                .bx {
+                    transition: color .2s ease;
+                    color: u.$c-Orange;
+                }
+            }
+        }
+
+        .prev {
+            left: 1rem;                
+        }
+
+        .next {
+            right: 1rem;
+        }
+    }
+
+    .thumbnails {
+        width: 44.5rem;
+        @extend %fx-jc-sb;
+
+        @include u.bp(sm) {
+            display: none;
+        }
+
+        .thumb {
+            width: 8.8rem;
+            height: 8.8rem;
+            border-radius: 1.1rem;
+
+            img {
+                width: 100%;
+                border-radius: 1rem;
+                transition: filter .25s ease;
+
+                &:hover {
+                    filter: opacity(0.4);
+                }
+            }
+
+            &.active {
+                border: 0.2rem solid u.$c-FadeOrange;
+
+                img {
+                    filter: opacity(0.4);
+                }
+            }            
+        }
+    }
+}
+
+.info {
+    @extend %fx-jcai-c;
+
+    .content {
+        width: 44.5rem;
+        height: 44.5rem;
+        @extend %fxcol-jc-sb;
+
+        @include u.bp(sm) {
+            width: 90%;
+            height: auto;
+        }
+
+        &__desc {       
+            .company {
+                margin-bottom: 1.2rem;
+                color: u.$c-FadeOrange;
+                font-size: 1.4rem;
+                font-weight: 700;
+                letter-spacing: 0.1rem;
+            }
+        
+            .title {
+                margin-bottom: 3.4rem;
+            }
+        }
+    
+        &__prices {
+            font-weight: 700;
+    
+            .current-price {
+                margin-bottom: 1rem;
+                @extend %fx-ai-c;
+          
+                .price {
+                    margin-right: 1.6rem;
+                    font-size: 2.7rem;
+                    letter-spacing: 0.1rem;
+                }
+        
+                .off {
+                    width: 5rem;
+                    height: 2.6rem;
+                    font-size: 1.7rem;
+                    color: u.$c-Orange;
+                    background: hsla(26, 100%, 55%, 0.1);
+                    border-radius: 0.6rem;
+                    @extend %fx-jcai-c;
+                }
+            }
+        
+            .prev-price {
+                color: u.$c-GrayishBlue;
+                text-decoration: line-through;
+            }
+        }
+       
+        &__buttons {
+            margin: 1rem 0 1.6rem 0;
+            @extend %fx-jc-sb;
+
+            @include u.bp(sm) {
+                margin-top: 5rem;
+                flex-direction: column;
+                row-gap: 1.6rem;
+            }
+    
+            .counter {
+                position: relative;
+                width: 15.8rem;
+                height: 5.6rem;
+                background: u.$c-LightGrayishBlue;
+                border-radius: 1rem;
+
+                @include u.bp(sm) {
+                    width: 100%;
+                    margin: auto;
+                }
+            }
+
+            .count {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                font-weight: 700;
+                @extend %fx-jcai-c;
+            }
+        
+            .sub,
+            .add {
+                position: absolute;
+                top: 0;
+                width: 4.4rem;
+                height: 100%;
+
+                &:hover {
+                    opacity: 0.6;
+                }
+
+                &:active {
+                    transform: scale(0.9);
+                }
+            } 
+        
+            .sub {
+                left: 0;
+                background: url(../images/icon-minus.svg) transparent no-repeat center;
+            }
+        
+            .add {
+                right: 0;
+                background: url(../images/icon-plus.svg) transparent no-repeat center;
+            }
+        
+            .addToCart {
+                width: 27rem;
+                height: 5.6rem;
+                color: u.$c-White;
+                background: u.$c-Orange;
+                border-radius: 1rem;
+                @extend %fx-jcai-c;
+                box-shadow: 0 2rem 2.8rem hsla(26, 100%, 55%, 0.2);
+                transition: all .2s ease-in-out;
+
+                @include u.bp(sm) {
+                    width: 100%;
+                    margin: auto;
+                }
+
+                img {
+                    transform: scale(0.8);
+                    transform-origin: top;
+                    margin-right: 1rem;
+                }
+
+                &:hover {
+                    opacity: 0.6;
+                }
+
+                &:active {
+                    transform: scale(0.95);
+                }
+            }
+        }
+    }   
+}

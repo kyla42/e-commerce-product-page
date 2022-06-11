@@ -1,0 +1,83 @@
+@use "util" as u;
+@use "product" as *;
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: u.$c-BlackAdOp;
+    display: flex;
+
+    &.hidden {
+        display: none;
+    }
+
+    .image-area {
+        margin: auto;
+    
+        .frame {
+            position: relative;
+            width: 55rem;
+            height: 55rem;
+
+            .close {
+                position: absolute;
+                top: -5rem;
+                right: 0;
+                width: 3rem;
+                height: 3rem;
+                font-size: 4.4rem;         
+                color: u.$c-White;
+                background-color: transparent;
+                @extend %fx-jcai-c;
+
+                &:hover {
+                    .bx {
+                        transition: color .2s ease;
+                        color: u.$c-Orange;
+                    }
+                }
+            }
+
+            .modal-prev,
+            .modal-next {
+                position: absolute;
+                top: 24.7rem;
+                width: 5.6rem;
+                height: 5.6rem;
+                font-size: 4rem;
+                background: u.$c-White;
+                border-radius: 50%;
+                @extend %fx-jcai-c;
+
+                &:hover {
+                    .bx {
+                        transition: color .2s ease;
+                        color: u.$c-Orange;
+                    }
+                }
+            }
+
+            .modal-prev {
+                left: -2.5rem;                
+            }
+
+            .modal-next {
+                right: -2.5rem;
+            }
+        }
+    
+        .thumbnails {
+            width: 44.5rem;
+            margin: 0 auto;
+            @extend %fx-jc-sb;
+
+            .modal-thumb {
+                @extend .thumb;
+                background-color: u.$c-White;          
+            }            
+        }
+    }
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="./dist/style.css">
+  
+  <title>Frontend Mentor | E-commerce product page</title>
+
+</head>
+
+<body>
+  <main class="main">
+    <div class="container">
+
+      <!-- navbar -->
+      <div class="navbar">
+
+        <div class="navbar__menu">
+          <button class="hbg-menu">
+            <img src="./images/icon-menu.svg" alt="menu icon">
+          </button>
+          <div class="logo">
+            <img src="./images/logo.svg" alt="sneakers logo image">
+          </div>
+            <a class="link" href="#">Collections</a>
+            <a class="link" href="#">Men</a>
+            <a class="link" href="#">Women</a>
+            <a class="link" href="#">About</a>
+            <a class="link" href="#">Contact</a>
+        </div>
+
+        <div class="navbar__personal">
+          <a role="button" class="cart-button">
+            <img src="./images/icon-cart.svg" alt="cart icon">
+            <div class="cart-counter hidden">0</div>
+          </a>         
+          <a href="#" class="account">
+            <div class="avatar"></div>
+          </a>
+        </div>
+
+        <div class="line"></div>
+
+        <!-- cart popup -->
+        <div class="cart hidden">  
+          <div class="cart__title">Cart</div>
+
+          <div class="cart__contents">
+            <div class="cart__contents--image"></div>
+            <div class="cart__contents--product">
+              <div class="name">Fall Limited Edition Sneakers</div>
+              <div class="calc">
+                <div class="price">$125.00</div>
+                <div class="number"></div>
+                <div class="total"></div>
+              </div>
+            </div>
+            <button class="cart__contents--empty"><img src="./images/icon-delete.svg" alt="trash icon"></button>                        
+          </div>
+
+          <button class="cart__checkout">Checkout</button>
+        </div>
+
+        <!-- empty cart popup -->
+        <div class="cart-empty hidden">
+          <div class="cart__title">Cart</div>
+          <div class="cart-empty__message">Your cart is empty.</div>
+        </div>
+
+      </div>
+
+      
+      <!-- product page -->
+      <div class="product">
+
+        <div class="image-area">
+          <div class="frame">
+            <img class="imgFrame" src="./images/image-product-1.jpg" alt="product image">
+            <a class="prev"><i class='bx bx-chevron-left'></i></a>
+            <a class="next"><i class='bx bx-chevron-right'></i></a>
+          </div>
+          <div class="thumbnails">
+            <a class="thumb active">
+              <img src="./images/image-product-1-thumbnail.jpg" alt="product image thumbnail">
+            </a>
+            <a class="thumb">
+              <img src="./images/image-product-2-thumbnail.jpg" alt="product image thumbnail">
+            </a>
+            <a class="thumb">
+              <img src="./images/image-product-3-thumbnail.jpg" alt="product image thumbnail">
+            </a>
+            <a class="thumb">
+              <img src="./images/image-product-4-thumbnail.jpg" alt="product image thumbnail">
+            </a>
+          </div>
+        </div>
+
+
+        <div class="info">
+            <div class="content">
+
+              <div class="content__desc">
+                <p class="company">SNEAKER COMPANY</p>
+                <h1 class="title">Fall Limited Edition Sneakers</h1>
+                <p>
+                  These low-profile sneakers are your perfect casual wear companion. Featuring a
+                  durable rubber outer sole, they’ll withstand everything the weather can offer.
+                </p>
+              </div>
+
+              <div class="content__prices">
+                <div class="current-price">
+                  <div class="price">$125.00</div>
+                  <div class="off"><span>50%</span></div>
+                </div>
+                <div class="prev-price">$250.00</div>
+              </div>
+              
+              <div class="content__buttons">
+                <div class="counter">
+                  <div class="count">0</div>
+                  <button class="sub"></button>
+                  <button class="add"></button>
+                </div>
+                <button class="addToCart"><img src="./images/icon-cart-white.svg" alt="cart icon">Add to cart</button>
+              </div>
+
+            </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- light box -->
+    <div class="overlay hidden">
+      <div class="image-area">
+        <div class="frame">
+          <img class="modal-imgFrame" src="./images/image-product-1.jpg" alt="product image">
+          <button class="close"><i class='bx bx-x'></i></button>
+          <button class="modal-prev"><i class='bx bx-chevron-left'></i></button>
+          <button class="modal-next"><i class='bx bx-chevron-right'></i></button>
+        </div>
+        <div class="thumbnails">
+          <a class="modal-thumb active">
+            <img src="./images/image-product-1-thumbnail.jpg" alt="product image thumbnail">
+          </a>
+          <a class="modal-thumb">
+            <img src="./images/image-product-2-thumbnail.jpg" alt="product image thumbnail">
+          </a>
+          <a class="modal-thumb">
+            <img src="./images/image-product-3-thumbnail.jpg" alt="product image thumbnail">
+          </a>
+          <a class="modal-thumb">
+            <img src="./images/image-product-4-thumbnail.jpg" alt="product image thumbnail">
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- mobile menu -->
+    <div class="mobile-overlay"></div>
+    <div class="menu-area">
+      <button class="menu-close"><i class='bx bx-x'></i></button>
+      <div class="mobile-menu">
+        <a class="link" href="#">Collections</a>
+        <a class="link" href="#">Men</a>
+        <a class="link" href="#">Women</a>
+        <a class="link" href="#">About</a>
+        <a class="link" href="#">Contact</a>
+      </div>
+    </div>
+    
+  </main>  
+<script src="./app/js/script.js"></script>
+</body>
+</html>

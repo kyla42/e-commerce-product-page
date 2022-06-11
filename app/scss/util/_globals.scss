@@ -1,0 +1,70 @@
+@use "colors" as *;
+@use "extend" as *;
+@use "mixins" as *;
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Kumbh Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+a,
+a:hover {
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    cursor: pointer;
+}
+
+button {
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 4.4rem;
+    line-height: 4.8rem;
+}
+
+p {
+    color: $c-DarkGrayishBlue;
+    line-height: 2.6rem;
+}
+
+.main {
+    max-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+}
+
+.container {
+    width: 144rem;
+    // max-height: 90rem;
+    margin: auto;
+    background: $c-White;
+    @extend %fxcol;
+
+    @include bp(md) {
+        width: 100%;
+    }
+}
