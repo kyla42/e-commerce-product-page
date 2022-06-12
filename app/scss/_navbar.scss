@@ -45,22 +45,29 @@
                 display: none;
             }
 
-            &::after {
+            &::before {
                 content: "";
                 position: absolute;
-                left: 0;
-                bottom: -4.3rem;
-                width: 100%;
+                left: 50%;
+                bottom: -4.4rem;
+                width: 0;
                 border-bottom: 0.4rem solid u.$c-Orange;
                 transition: all .3s ease-in-out;
                 opacity: 0;
             }
 
+            &::after {
+                @extend &::before;
+                right: 50%;
+            }
+
             &:hover {
                 color: u.$c-VeryDarkBlue;
 
+                &::before,
                 &::after {
                     opacity: 1;
+                    width: 50%;
                 }
             }
         }
