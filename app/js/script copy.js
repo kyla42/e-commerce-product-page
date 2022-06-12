@@ -11,11 +11,6 @@ const numOfProducts = document.querySelector(".number");
 const total = document.querySelector(".total");
 const empty = document.querySelector(".cart__contents--empty");
 
-const cartClose = () => {
-    cartPopUp.classList.add("hidden");
-    emptyCartPopUp.classList.add("hidden");
-}
-
 num = 0;
 cartNum = 0;
 price = 125.00;
@@ -68,25 +63,24 @@ empty.addEventListener("click", () => {
     emptyCartPopUp.classList.remove("hidden");
 });
 
+const cartClose = () => {
+    cartPopUp.classList.add("hidden");
+    emptyCartPopUp.classList.add("hidden");
+}
+
 window.addEventListener("resize", cartClose)
 
 
 // image-related
-// **main**
 const imgFrame = document.querySelector(".imgFrame");
 const thumbBtn = document.querySelectorAll(".thumb");
 
-// **modal**
 const overlay = document.querySelector(".overlay");
 const closeModal = document.querySelector(".close");
 const imgFrameModal = document.querySelector(".modal-imgFrame");
 const thumbBtnModal = document.querySelectorAll(".modal-thumb");
 const prevModal = document.querySelector(".modal-prev");
 const nextModal = document.querySelector(".modal-next");
-
-// **mobile**
-const prev = document.querySelector(".prev");
-const next = document.querySelector(".next");
 
 productImgs = [
     "./images/image-product-1.jpg",
@@ -95,24 +89,19 @@ productImgs = [
     "./images/image-product-4.jpg"
 ];
 
-const resetThumb = () => {
-    for (let j of thumbBtn) {
-        j.classList.remove("active");
-    }
-};
-
-const resetThumbModal = () => {
-    for (let k of thumbBtnModal) {
-        k.classList.remove("active");
-    }
-};
-
-
 // main page image slider (tied to modal image slider)
+i = 0;
+
 for (let i = 0; i < thumbBtn.length; i++) {
-    thumbBtn[i].addEventListener("click", () => {     
-        resetThumb();
-        resetThumbModal();
+    thumbBtn[i].addEventListener("click", () => {
+        
+        for (let j of thumbBtn) {
+            j.classList.remove("active");
+        }
+        for (let k of thumbBtnModal) {
+            k.classList.remove("active");
+        }
+        
         imgFrame.src = productImgs[i];
         imgFrameModal.src = productImgs[i];
         thumbBtn[i].classList.add("active");    
@@ -121,7 +110,7 @@ for (let i = 0; i < thumbBtn.length; i++) {
 };
 
 
-// modal on
+// modal on/off
 const mediaSm = window.matchMedia("(max-width: 600px)");
 
 imgFrame.addEventListener("click", () => {
@@ -138,29 +127,34 @@ imgFrame.addEventListener("click", () => {
     })
 });
 
-// modal off
-closeModal.addEventListener("click", () => 
-    overlay.classList.add("hidden"));
+closeModal.addEventListener("click", () => overlay.classList.add("hidden"));
 
 
 // modal image slider (thumbnails & buttons)
-const getSrcModal = () => {
-    let currentImg = imgFrameModal.getAttribute("src");
-    i = productImgs.indexOf(currentImg);
-};
-
 for (let i = 0; i < thumbBtnModal.length; i++) {
-    thumbBtnModal[i].addEventListener("click", () => {     
-        resetThumbModal();        
+    thumbBtnModal[i].addEventListener("click", () => {
+        
+        for (let k of thumbBtnModal) {
+            k.classList.remove("active");
+        };
+        
         imgFrameModal.src = productImgs[i]; 
         thumbBtnModal[i].classList.add("active");
     });
 };
 
-nextModal.addEventListener("click", () => {    
-    resetThumbModal();
-    getSrcModal();
+const getSrcModal = () => {
+    let currentImg = imgFrameModal.getAttribute("src");
+    i = productImgs.indexOf(currentImg);
+};
 
+nextModal.addEventListener("click", () => {
+    
+    for (let k of thumbBtnModal) {
+        k.classList.remove("active");
+    };
+
+    getSrcModal();
     i++;
     if (i > productImgs.length - 1) {
         i = 0;
@@ -171,9 +165,12 @@ nextModal.addEventListener("click", () => {
 });
 
 prevModal.addEventListener("click", () => {
-    resetThumbModal();
-    getSrcModal();
 
+    for (let k of thumbBtnModal) {
+        k.classList.remove("active");
+    };
+
+    getSrcModal();
     i--;
     if (i < 0) {
         i = productImgs.length - 1;
@@ -185,15 +182,19 @@ prevModal.addEventListener("click", () => {
 
 
 // mobile screen image slider (tied to front page image slider)
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
 const getSrc = () => {
     let currentImg = imgFrame.getAttribute("src");
     i = productImgs.indexOf(currentImg);
 }
 
 next.addEventListener("click", () => { 
-    resetThumb();
-    getSrc();
+    for (let j of thumbBtn) {
+        j.classList.remove("active");
+    };
     
+    getSrc();
     i++;
     if (i > productImgs.length - 1) {
         i = 0;
@@ -204,9 +205,11 @@ next.addEventListener("click", () => {
 });
 
 prev.addEventListener("click", () => {  
-    resetThumb();  
+    for (let j of thumbBtn) {
+        j.classList.remove("active");
+    };
+    
     getSrc();
-
     i--;
     if (i < 0) {
         i = productImgs.length - 1;
