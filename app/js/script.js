@@ -116,6 +116,16 @@ const thumbImgChanger = (i) => {
     thumbBtnModal[i].classList.add("active");
 }
 
+const getSrcModal = () => {
+    let currentImg = imgFrameModal.getAttribute("src");
+    i = productImgs.indexOf(currentImg);
+};
+
+const getSrc = () => {
+    let currentImg = imgFrame.getAttribute("src");
+    i = productImgs.indexOf(currentImg);
+}
+
 const nextImg = () => {
     resetThumbModal();
     getSrcModal();
@@ -182,11 +192,6 @@ closeModal.addEventListener("click", () =>
 
 
 // modal image slider
-const getSrcModal = () => {
-    let currentImg = imgFrameModal.getAttribute("src");
-    i = productImgs.indexOf(currentImg);
-};
-
 for (let i = 0; i < thumbBtnModal.length; i++) {
     thumbBtnModal[i].addEventListener("click", () => {     
         thumbImgChanger(i);
@@ -198,11 +203,6 @@ prevModal.addEventListener("click", prevImg);
 
 
 // mobile screen image slider
-const getSrc = () => {
-    let currentImg = imgFrame.getAttribute("src");
-    i = productImgs.indexOf(currentImg);
-}
-
 next.addEventListener("click", nextImg);
 prev.addEventListener("click", prevImg);
 
