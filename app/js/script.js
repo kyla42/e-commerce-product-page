@@ -107,16 +107,54 @@ const resetThumbModal = () => {
     }
 };
 
+const thumbImgChanger = (i) => {
+    resetThumb();
+    resetThumbModal();
+    imgFrame.src = productImgs[i];
+    imgFrameModal.src = productImgs[i];
+    thumbBtn[i].classList.add("active");    
+    thumbBtnModal[i].classList.add("active");
+}
 
-// main page image slider (tied to modal image slider)
+const nextImg = () => {
+    resetThumbModal();
+    getSrcModal();
+    resetThumb();
+    getSrc();
+    
+    i++;
+    if (i > productImgs.length - 1) {
+        i = 0;
+    };
+
+    imgFrame.src = productImgs[i];
+    thumbBtn[i].classList.add("active");
+    imgFrameModal.src = productImgs[i];
+    thumbBtnModal[i].classList.add("active");
+}
+
+const prevImg = () => {
+    resetThumbModal();
+    getSrcModal();
+    resetThumb();  
+    getSrc();
+
+    i--;
+    if (i < 0) {
+        i = productImgs.length - 1;
+    };
+
+    imgFrame.src = productImgs[i];
+    thumbBtn[i].classList.add("active");
+    imgFrameModal.src = productImgs[i];
+    thumbBtnModal[i].classList.add("active");
+}
+
+
+// main page image slider
 for (let i = 0; i < thumbBtn.length; i++) {
     thumbBtn[i].addEventListener("click", () => {     
-        resetThumb();
-        resetThumbModal();
-        imgFrame.src = productImgs[i];
-        imgFrameModal.src = productImgs[i];
-        thumbBtn[i].classList.add("active");    
-        thumbBtnModal[i].classList.add("active");
+        thumbImgChanger(i);
     });
 };
 
@@ -143,7 +181,7 @@ closeModal.addEventListener("click", () =>
     overlay.classList.add("hidden"));
 
 
-// modal image slider (thumbnails & buttons)
+// modal image slider
 const getSrcModal = () => {
     let currentImg = imgFrameModal.getAttribute("src");
     i = productImgs.indexOf(currentImg);
@@ -151,70 +189,22 @@ const getSrcModal = () => {
 
 for (let i = 0; i < thumbBtnModal.length; i++) {
     thumbBtnModal[i].addEventListener("click", () => {     
-        resetThumbModal();        
-        imgFrameModal.src = productImgs[i]; 
-        thumbBtnModal[i].classList.add("active");
+        thumbImgChanger(i);
     });
 };
 
-nextModal.addEventListener("click", () => {    
-    resetThumbModal();
-    getSrcModal();
-
-    i++;
-    if (i > productImgs.length - 1) {
-        i = 0;
-    };
-
-    imgFrameModal.src = productImgs[i];
-    thumbBtnModal[i].classList.add("active");
-});
-
-prevModal.addEventListener("click", () => {
-    resetThumbModal();
-    getSrcModal();
-
-    i--;
-    if (i < 0) {
-        i = productImgs.length - 1;
-    };
-
-    imgFrameModal.src = productImgs[i];
-    thumbBtnModal[i].classList.add("active");
-});
+nextModal.addEventListener("click", nextImg);
+prevModal.addEventListener("click", prevImg);
 
 
-// mobile screen image slider (tied to front page image slider)
+// mobile screen image slider
 const getSrc = () => {
     let currentImg = imgFrame.getAttribute("src");
     i = productImgs.indexOf(currentImg);
 }
 
-next.addEventListener("click", () => { 
-    resetThumb();
-    getSrc();
-    
-    i++;
-    if (i > productImgs.length - 1) {
-        i = 0;
-    };
-
-    imgFrame.src = productImgs[i];
-    thumbBtn[i].classList.add("active");
-});
-
-prev.addEventListener("click", () => {  
-    resetThumb();  
-    getSrc();
-
-    i--;
-    if (i < 0) {
-        i = productImgs.length - 1;
-    };
-
-    imgFrame.src = productImgs[i];
-    thumbBtn[i].classList.add("active");
-});
+next.addEventListener("click", nextImg);
+prev.addEventListener("click", prevImg);
 
 
 // mobile menu
