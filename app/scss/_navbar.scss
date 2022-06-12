@@ -45,10 +45,10 @@
                 display: none;
             }
 
-            &::before {
+            &::before,
+            &::after {
                 content: "";
                 position: absolute;
-                left: 50%;
                 bottom: -4.4rem;
                 width: 0;
                 border-bottom: 0.4rem solid u.$c-Orange;
@@ -56,8 +56,11 @@
                 opacity: 0;
             }
 
+            &::before {
+                left: 50%;
+            }
+
             &::after {
-                @extend &::before;
                 right: 50%;
             }
 

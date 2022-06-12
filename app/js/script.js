@@ -16,9 +16,9 @@ const cartClose = () => {
     emptyCartPopUp.classList.add("hidden");
 }
 
-num = 0;
-cartNum = 0;
-price = 125.00;
+let num = 0;
+let cartNum = 0;
+let price = 125.00;
 
 add.addEventListener("click", () => {
     num++;

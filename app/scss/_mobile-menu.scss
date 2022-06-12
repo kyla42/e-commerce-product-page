@@ -1,7 +1,7 @@
 @use "util" as u;
 
 .mobile-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -100%;
     width: 100%;
@@ -20,7 +20,7 @@
 }
 
 .menu-area {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -100%;
     width: 70%;
@@ -30,7 +30,6 @@
     background: u.$c-White;
     transition: all .3s ease-in-out;
     
-
     @include u.bp(md) {
 
         &.active {
